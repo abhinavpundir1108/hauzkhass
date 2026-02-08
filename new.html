@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shruti ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  height:100vh;
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#3a0000,#8b0000,#1e0000);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  color:#f5dede;
+}
+
+/* MAIN CARD */
+.container{
+  background:rgba(15,0,0,0.92);
+  padding:30px 26px;
+  border-radius:26px;
+  max-width:420px;
+  width:90%;
+  text-align:center;
+  box-shadow:0 30px 60px rgba(0,0,0,0.6);
+  animation:fadeIn 1.3s ease;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:2.3rem;
+  margin:0 0 8px;
+  color:#ffd6d6;
+}
+
+p{
+  font-size:0.95rem;
+  line-height:1.6;
+  color:#f2caca;
+}
+
+/* HAND */
+.hand{
+  margin:26px auto 18px;
+  width:140px;
+  height:200px;
+  background:#ddb1a7;
+  border-radius:70px 70px 40px 40px;
+  position:relative;
+}
+
+.finger{
+  width:32px;
+  height:120px;
+  background:#f2c4b8;
+  border-radius:18px;
+  position:absolute;
+  top:12px;
+  left:54px;
+}
+
+/* RING */
+.ring{
+  position:absolute;
+  top:-50px;
+  left:-7px;
+  font-size:36px;
+  opacity:0;
+  transition:all 1.2s ease;
+}
+
+.ring.show{
+  top:40px;
+  opacity:1;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+}
+
+button{
+  border:none;
+  padding:11px 22px;
+  font-size:0.95rem;
+  border-radius:28px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.accept{
+  background:#b30000;
+  color:#fff;
+}
+
+.deny{
+  background:#260000;
+  color:#f5dede;
+  border:1px solid #5a1a1a;
+}
+
+button:hover{
+  transform:scale(1.06);
+}
+
+/* LETTER */
+.letter{
+  margin-top:20px;
+  font-family:'Playfair Display',serif;
+  min-height:160px;
+  white-space:pre-line;
+  color:#ffe6e6;
+  display:none;
+}
+
+/* PHOTO OVERLAY */
+.photo-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 1s ease;
+  z-index:10;
+}
+
+.photo-overlay.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.photo-overlay img{
+  width:80%;
+  max-width:340px;
+  border-radius:20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.7);
+  animation:zoomIn 1.2s ease;
+}
+
+/* SPARKLES */
+.sparkle{
+  position:absolute;
+  font-size:22px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes zoomIn{
+  from{transform:scale(0.85);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+<h1>Shruti ❤️</h1>
+<p>
+No pressure.<br>
+Just something from my heart.
+</p>
+
+<div class="hand">
+  <div class="finger">
+    <div id="ring" class="ring">💍</div>
+  </div>
+</div>
+
+<div class="buttons">
+  <button class="accept" onclick="acceptProposal()">Accept my proposal 💕</button>
+  <button class="deny" onclick="denyProposal()">Deny 🙈</button>
+</div>
+
+<div id="letter" class="letter"></div>
+
+</div>
+
+<!-- PHOTO OVERLAY -->
+<div id="photoOverlay" class="photo-overlay" onclick="closePhoto()">
+  <img src="memory.jpeg" alt="Us">
+</div>
+
+<script>
+function acceptProposal(){
+  document.getElementById("ring").classList.add("show");
+  document.querySelector(".buttons").style.display="none";
+
+  // play music only after yes
+  document.getElementById("bgMusic").play();
+
+  // show photo first
+  document.getElementById("photoOverlay").classList.add("show");
+
+  startCelebration();
+}
+
+function closePhoto(){
+  document.getElementById("photoOverlay").classList.remove("show");
+  setTimeout(showLetter,600);
+}
+
+function denyProposal(){
+  alert(
+    "Are you sure? 😏\n\n" +
+    "Because once you click this,\n" +
+    "I’m claiming extra hugs,\n" +
+    "lazy moments together,\n" +
+    "and zero escape plans 💗"
+  );
+}
+
+const letterText =
+`Shruti,
+
+Somewhere between normal days
+and quiet moments,
+you became the choice
+I never question.
+
+This is my Propose Day feeling —
+steady, sure, and real.
+And since it’s Chocolate Day too,
+I promise to share…
+and occasionally steal 😌🍫
+
+I know this came a little late,
+but what I feel never was.
+
+Always,
+Abhinav ❤️`;
+
+function showLetter(){
+  const box=document.getElementById("letter");
+  box.style.display="block";
+  typeWriter(letterText,box);
+}
+
+function typeWriter(text,el,i=0){
+  if(i<text.length){
+    el.innerHTML+=text.charAt(i);
+    setTimeout(()=>typeWriter(text,el,i+1),30);
+  }
+}
+
+function startCelebration(){
+  setInterval(()=>{
+    const s=document.createElement("div");
+    s.className="sparkle";
+    s.innerText=Math.random()>0.5?"❤️":"✨";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDuration=(3+Math.random()*4)+"s";
+    document.body.appendChild(s);
+    setTimeout(()=>s.remove(),7000);
+  },350);
+}
+</script>
+
+</body>
+</html>
